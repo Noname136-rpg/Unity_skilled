@@ -26,17 +26,21 @@ public class EquipManager : MonoBehaviour
     public Image ItemSprite;
     public Image StatusSprite;
 
-    public GameObject TInvenM;
-    private InventoryManager InvenM;
+
+    private SlotManager slotManager;
+    private Item TempItem;
     void Start()
     {
         StatusColorList = new List<Color32> { AttackColor, DefenceColor, HealthColor, CriticalColor };
-        //InvenM = TInvenM.GetComponent<InventoryManager>();
+        
     }
 
     // Update is called once per frame
-    public void drawEquipNotion(Item item)
+    public void drawEquipNotion(Item item, SlotManager slotM)
     {
+        slotManager = slotM;
+        TempItem = item;
+
         IName.text = item.itemName;
         ITooltip.text = item.itmeTooltip;
         Debug.Log((int)((item as EquipmentItem).inputStat));
@@ -55,7 +59,7 @@ public class EquipManager : MonoBehaviour
 
     public void ConfirmEquip()
     {
-
+        slotManager.ActiveEquip();
     }
 
     public void CancelEquip()

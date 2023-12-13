@@ -22,6 +22,11 @@ public class SlotManager: MonoBehaviour
     public void ShowEquipNotion()
     {
         EquipNotion.SetActive(true);
-        EquipM.drawEquipNotion(holdingItem);
+        EquipM.drawEquipNotion(holdingItem, gameObject.GetComponent<SlotManager>());
+    }
+
+    public void ActiveEquip()
+    {
+        isEquip.SetActive(true);
     }
 }
